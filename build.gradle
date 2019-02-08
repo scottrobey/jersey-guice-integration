@@ -1,0 +1,57 @@
+
+apply plugin: 'idea'
+apply plugin: 'java'
+
+group "org.robey.example"
+version "1.0"
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-jetty-http', version: '2.28'
+
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.28'
+    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.28'
+
+    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.28'
+    compile "org.glassfish.jersey.inject:jersey-hk2:2.28"
+
+    compile "org.glassfish.hk2:guice-bridge:2.5.0"
+
+
+    // jetty, TODO: upgrade to latest version
+    compile 'org.eclipse.jetty:jetty-server:9.4.7.v20170914'
+    compile 'org.eclipse.jetty:jetty-servlet:9.4.7.v20170914'
+
+    //compile group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.4.14.v20181114'
+
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+
+
+    // guice
+    compile 'com.google.inject:guice:4.2.2'
+    //compile 'com.google.inject.extensions:guice-${extension}:4.2.2'
+    compile 'com.google.inject.extensions:guice-servlet:4.2.2'
+
+    compile 'com.google.inject.extensions:guice-assistedinject:4.2.2'
+    compile 'com.google.inject.extensions:guice-multibindings:4.2.2'
+
+    // needed for JDK11
+    compile 'javax.xml.bind:jaxb-api:2.2.11'
+    compile 'com.sun.xml.bind:jaxb-core:2.2.11'
+    compile 'com.sun.xml.bind:jaxb-impl:2.2.11'
+    compile 'javax.activation:activation:1.1.1'
+}
+

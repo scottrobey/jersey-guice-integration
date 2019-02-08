@@ -1,0 +1,22 @@
+# IntelliJ IDEA files
+*.iml
+.idea/
+.settings
+.project
+.classpath
+.vscode
+bin/
+out/
+
+# A hidden file created by the Mac OS X Finder.
+.DS_Store
+
+# Created by many actions in Brainspace
+logs/
+
+#gradle files
+build/
+.gradle
+
+log/error.log
+log/info.log

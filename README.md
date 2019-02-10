@@ -8,7 +8,8 @@ Jersey has built-in support for Guice in most recent versions, via the `GuiceBri
 The problem is that for projects that want to delegate dependency injection to Guice completely, it's not obvious where to boot-strap the Jersey container to plug-in the Guice injector.
 This project uses a Jersey `ComponentProvider` as the entry point to register the Guice `Injector` with the Jersey `InjectionManager`.
 The `ComponentProvider` should be registered via a file in the classpath: `/META-INF/services/org.glassfish.jersey.server.spi.ComponentProvider`
-Note: I tried, unsuccessfully, to register the ComponentProvider via `ResourceConfig.register()` method, but received warnings stating that the class: `does not implement any provider interfaces applicable in the SERVER runtime:
+
+**Note:** I tried, unsuccessfully, to register the ComponentProvider via `ResourceConfig.register()` method, but received warnings stating that the class: "does not implement any provider interfaces applicable in the SERVER runtime"
 
 
 Documentation for Jersey-Jetty integration and ComponentProvider: https://jersey.github.io/documentation/latest/deployment.html

@@ -2,6 +2,7 @@ package org.example.jerseyguice;
 
 import java.net.URI;
 import java.util.EnumSet;
+import java.util.logging.Logger;
 
 import javax.servlet.DispatcherType;
 import javax.ws.rs.core.UriBuilder;
@@ -22,11 +23,12 @@ import com.google.inject.servlet.ServletModule;
 import com.google.inject.servlet.ServletScopes;
 
 public class JettyServer {
+    static final Logger LOGGER = Logger.getLogger(JettyServer.class.getName());
 
     public static void main(String[] args) throws Exception {
-        log("Jetty Server Starting Up ...");
+        LOGGER.info("Jetty Server Starting Up ...");
 
-        log("Setting up Guice...");
+        LOGGER.info("Setting up Guice...");
         Injector injector = Guice.createInjector(new MyModule(), new MyServletModule());
 
         JerseyGuiceComponentProvider.install(injector);
@@ -39,17 +41,8 @@ public class JettyServer {
 
         server.start();
 
-        log("Server started: " + baseUri.toURL());
+        LOGGER.info("Server started: " + baseUri.toURL());
         server.join();
-    }
-
-    static void log(String msg) {
-        System.out.println(msg);
-    }
-
-    static void logError(String msg, Throwable t) {
-        System.out.println(msg);
-        t.printStackTrace();
     }
 
     // https://jersey.github.io/documentation/latest/deployment.html

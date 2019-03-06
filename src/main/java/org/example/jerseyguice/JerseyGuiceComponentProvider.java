@@ -75,14 +75,14 @@ public class JerseyGuiceComponentProvider implements ComponentProvider {
     protected Injector getInjector() {
         final Injector theInjector;
         if(INJECTOR != null) {
-            LOGGER.fine("Using installed Guice Injector.");
+            LOGGER.fine("Using installed Guice Injector");
             theInjector = INJECTOR;
         }else if (INJECTOR_SUPPLIER != null) {
             LOGGER.fine("Using Guice Injector Supplier");
             theInjector = INJECTOR_SUPPLIER.get();
         } else {
             theInjector = null;
-            LOGGER.warning("No Injector or Injector Supplier has been registered, Jersey-Guice Integration is not setup.");
+            LOGGER.warning("No Injector or Injector Supplier has been registered, Jersey-Guice Integration is not setup");
         }
         return theInjector;
     }
